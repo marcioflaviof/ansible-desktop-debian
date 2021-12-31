@@ -1,0 +1,25 @@
+- name: Add Docker GPG apt Key
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
+  tags:
+    - install
+    - productivity
+    - vscode
+
+- name: Add Docker Repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+    state: present
+  tags:
+    - install
+    - productivity
+    - vscode
+
+- name: Install VSCode
+  apt:
+    name: code
+  tags:
+    - install
+    - productivity
+    - vscode

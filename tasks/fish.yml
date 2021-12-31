@@ -1,0 +1,78 @@
+- name: Install Fish
+  apt: name=fish
+  tags:
+    - install
+    - productivity
+    - dotfiles
+    - fish
+
+- name: Change shell to Fish
+  shell: chsh -s $(which fish)
+  tags:
+    - install
+    - productivity
+    - dotfiles
+    - fish
+
+- name: Creating config directory
+  file:
+    path: "{{ lookup('env', 'HOME') }}/.config/fish"
+    state: directory
+  tags:
+    - install
+    - productivity
+    - dotfiles
+    - fish
+
+- name: Removing greeting message and creating config file
+  copy:
+    dest: "{{ lookup('env', 'HOME') }}/.config/fish/config.fish"
+    content: |
+      set -g -x fish_greeting ''
+  tags:
+    - install
+    - productivity
+    - dotfiles
+    - fish
+
+- name: Copying starship theme to file
+  shell: curl -o starship.sh https://starship.rs/install.sh
+  tags:
+    - install
+    - fish
+    - starship
+
+- name: Setting permission for file to execute
+  file:
+    dest: ./starship.sh
+    mode: +x
+  tags:
+    - install
+    - fish
+    - starship
+
+- name: Execute and accept starship theme file
+  script: ./starship.sh -y
+  tags:
+    - install
+    - fish
+    - starship
+
+- name: Remove starship file
+  file:
+    state: absent
+    path: ./starship.sh
+  tags:
+    - install
+    - starship
+    - fish
+
+- name: Add starship to fish
+  lineinfile:
+    path: "{{ lookup('env', 'HOME') }}/.config/fish/config.fish"
+    line: "starship init fish | source"
+  tags:
+    - install
+    - fish
+    - dotfiles
+    - starship
