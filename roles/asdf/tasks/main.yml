@@ -13,3 +13,15 @@
   become: true
   apt:
     name: ["libssl-dev", "libyaml-dev", "zlib1g-dev", "libncurses5-dev", "libffi-dev"]
+
+- name: Install asdf
+  become: false
+  ansible.builtin.git:
+    repo: "https://github.com/asdf-vm/asdf.git"
+    dest: "{{ lookup('env', 'HOME') }}/.asdf"
+    single_branch: yes
+    version: "{{ asdf_version }}"
+
+- include_tasks: nodejs.yml
+
+- include_tasks: ruby.yml
