@@ -1,7 +1,0 @@
-- name: Add asdf to fish
-  lineinfile:
-    path: ~/.config/fish/config.fish
-    line: "source ~/.asdf/asdf.fish"
-  tags:
-    - install
-    - asdf

@@ -1,0 +1,15 @@
+- name: Install asdf dependencies
+  become: true
+  apt:
+    name: ["unzip", "git", "autoconf", "automake", "gcc",
+  "g++", "make", "patch", "pkg-config", "binutils", "libtool", "bison", "libreadline-dev"]
+
+- name: Install node dependencies
+  become: true
+  apt:
+    name: ["gpg", "dirmngr"]
+
+- name: Install ruby dependencies
+  become: true
+  apt:
+    name: ["libssl-dev", "libyaml-dev", "zlib1g-dev", "libncurses5-dev", "libffi-dev"]
