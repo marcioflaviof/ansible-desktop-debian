@@ -19,7 +19,6 @@
   ansible.builtin.git:
     repo: "https://github.com/asdf-vm/asdf.git"
     dest: "{{ lookup('env', 'HOME') }}/.asdf"
-    single_branch: yes
     version: "{{ asdf_version }}"
 
 - include_tasks: nodejs.yml
