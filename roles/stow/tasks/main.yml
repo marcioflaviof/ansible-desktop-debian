@@ -10,11 +10,13 @@
     dest: "{{ lookup('env', 'HOME') }}/.dotfiles"
 
 - name: Remove zshrc
+  become: true
   file:
     state: absent
     path: "{{ lookup('env', 'HOME') }}/.zshrc"
 
 - name: Remove bashrc
+  become: true
   file:
     state: absent
     path: "{{ lookup('env', 'HOME') }}/.bashrc"

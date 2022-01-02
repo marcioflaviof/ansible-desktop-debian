@@ -6,24 +6,8 @@
   become: true
   shell: chsh -s $(which fish)
 
-- name: Creating config directory
-  file:
-    path: "{{ lookup('env', 'HOME') }}/.config/fish"
-    state: directory
-
-- name: Removing greeting message and creating config file
-  copy:
-    dest: "{{ lookup('env', 'HOME') }}/.config/fish/config.fish"
-    content: |
-      set -g -x fish_greeting ''
-
 - name: Copying starship theme to file
   shell: curl -o starship.sh https://starship.rs/install.sh
-
-- name: Setting permission for file to execute
-  file:
-    dest: ./starship.sh
-    mode: +x
 
 - name: Execute and accept starship theme file
   script: ./starship.sh -y
@@ -32,8 +16,3 @@
   file:
     state: absent
     path: ./starship.sh
-
-- name: Add starship to fish
-  lineinfile:
-    path: "{{ lookup('env', 'HOME') }}/.config/fish/config.fish"
-    line: "starship init fish | source"

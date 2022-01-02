@@ -16,12 +16,11 @@
         state: present
 
   roles:
+    - { role: stow, tags: stow }
     - { role: core, tags: core }
     - { role: ssh, tags: ssh }
     - { role: neovim, tags: neovim }
-    - { role: git, tags: git }
     - { role: fish, tags: fish }
-    - { role: stow, tags: stow }
     - { role: asdf, tags: asdf }
     - { role: docker, tags: docker }
     - { role: snaps, tags: snaps }
