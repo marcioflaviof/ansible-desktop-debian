@@ -26,4 +26,11 @@
     - { role: snaps, tags: snaps }
     - { role: vscode, tags: vscode }
     - { role: slack, tags: slack }
+    - role: cimon-io.asdf
+      asdf_plugins:
+        - name: "nodejs"
+          versions: ["lts", "17.2.0"]
+          global: "lts"
+        - name: "ruby"
+          versions: ["2.5.1", "3.0.2"]
 
