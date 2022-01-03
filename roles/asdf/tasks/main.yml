@@ -21,6 +21,15 @@
     dest: "{{ lookup('env', 'HOME') }}/.asdf"
     version: "{{ asdf_version }}"
 
+- name: "source asdf script"
+  template:
+    src: "asdf.sh.j2"
+    dest: "/etc/profile.d/asdf.sh"
+    owner: "root"
+    group: "root"
+    mode: 0755
+  become: True
+
 - include_tasks: nodejs.yml
 
 - include_tasks: ruby.yml
