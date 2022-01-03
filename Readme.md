@@ -9,9 +9,7 @@
 
 2. Clone this repo
 
-3. `ansible-galaxy install -r requirements.yml`
-
-4. Apply the config
+3. Apply the config
    `ansible-playbook local.yml --ask-become-pass --ask-vault-pass`
 
 ## If you want to try in a docker container:
@@ -22,6 +20,4 @@ run
    <br>
 2. `docker run --rm -it test-computer bash`
    <br>
-3. `ansible-galaxy install -r requirements.yml`
-   <br>
-4. `ansible-playbook local.yml --ask-vault-pass`
+3. `ansible-playbook local.yml --ask-vault-pass`

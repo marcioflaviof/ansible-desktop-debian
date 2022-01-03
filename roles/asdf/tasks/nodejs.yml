@@ -1,32 +1,32 @@
 - name: check if nodejs plugin installed
   become: false
-  shell: "asdf list | grep nodejs"
+  shell: "bash -lc 'asdf list | grep nodejs'"
   register: nodejs_plugin_exists
   ignore_errors: true
 
 - name: install nodejs plugin for asdf
   become: false
-  shell: "asdf plugin-add nodejs"
+  shell: "bash -lc 'asdf plugin-add nodejs'"
   when: nodejs_plugin_exists is not successful
       
 - name: check installed nodejs version
   become: false
-  shell: "asdf list nodejs | grep {{ nodejs_version }}"
+  shell: "bash -lc 'asdf list nodejs | grep {{ nodejs_version }}''"
   register: nodejs_version_exists
   ignore_errors: true
 
 - name: install nodejs
   become: false
-  shell: "asdf install nodejs {{ nodejs_version }}"
+  shell: "bash -lc 'asdf install nodejs {{ nodejs_version }}''"
   register: nodejs_installed
   when: nodejs_version_exists is not successful
 
 - name: set global nodejs version
   become: false
-  shell: "asdf global nodejs {{ nodejs_version }}"
+  shell: "bash -lc 'asdf global nodejs {{ nodejs_version }}''"
   when: nodejs_version_exists is successful or nodejs_installed is successful
 
 - name: reshim nodejs
   become: false
-  shell: "asdf reshim nodejs"
+  shell: "bash -lc 'asdf reshim nodejs'"
   when: nodejs_version_exists is successful or nodejs_installed is successful

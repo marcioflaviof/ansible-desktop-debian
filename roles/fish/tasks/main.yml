@@ -1,6 +1,12 @@
+- name: Add fish repository
+  apt_repository:
+    repo: ppa:fish-shell/release-3
+
 - name: Install Fish
   become: true
-  apt: name=fish
+  apt:
+    name: fish
+    update_cache: true
 
 - name: Change shell to Fish
   become: true

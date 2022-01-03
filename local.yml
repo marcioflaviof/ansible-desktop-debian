@@ -15,7 +15,6 @@
 
   roles:
     - { role: core, tags: core }
-    - { role: ssh, tags: ssh }
     - { role: neovim, tags: neovim }
     - { role: fish, tags: fish }
     - { role: stow, tags: stow }
@@ -24,4 +23,5 @@
     - { role: snaps, tags: snaps }
     - { role: vscode, tags: vscode }
     - { role: slack, tags: slack }
+    - { role: ssh, tags: ssh }
 
